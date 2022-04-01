@@ -2,7 +2,7 @@ package menu;
 
 import java.util.Scanner;
 
-import excepciones.invalidInput;
+import excepciones.negativeInput;
 import figurasGeometricas.Cilindro;
 import figurasGeometricas.Cono;
 import figurasGeometricas.Cubo;
@@ -13,8 +13,8 @@ public class Menu {
 	// Atributos
 	private static Scanner teclado = new Scanner(System.in);
 
-	//Método main de la aplicación
-	public static void main(String[] args) throws invalidInput {
+	// Método main de la aplicación
+	public static void main(String[] args) throws negativeInput {
 
 		Rombo rombo = new Rombo();
 		Cilindro cilindro = new Cilindro();
@@ -37,35 +37,103 @@ public class Menu {
 
 			switch (choice) {
 			case "1":
-				rombo.solicitarDatos();
-				rombo.calcularArea();
+				try {
+					rombo.solicitarDatos();
+					rombo.calcularArea();
+				} catch (Exception e) {
+					if (e.getMessage().equals("Ningún valor puede ser menor o igual a 0!")) {
+					System.out.println(e.getMessage());
+					}
+					else {
+						System.out.println("Debes introducir valores numéricos!");
+					}
+				}
 				break;
 			case "2":
-				cilindro.solicitarDatos();
-				cilindro.calcularArea();
+				try {
+					cilindro.solicitarDatos();
+					cilindro.calcularArea();
+				} catch (Exception e1) {
+					System.out.println(e1.getMessage());
+				}
 				break;
 			case "3":
-				cono.solicitarDatos();
-				cono.calcularArea();
+				try {
+					cono.solicitarDatos();
+					cono.calcularArea();
+				} catch (Exception e) {
+					if (e.getMessage().equals("Ningún valor puede ser menor o igual a 0!")) {
+					System.out.println(e.getMessage());
+					}
+					else {
+						System.out.println("Debes introducir valores numéricos!");
+					}
+				}
 				break;
 			case "4":
-				cubo.solicitarDatos();
-				cubo.calcularArea();
+				try {
+					cubo.solicitarDatos();
+					cubo.calcularArea();
+				} catch (Exception e) {
+					if (e.getMessage().equals("Ningún valor puede ser menor o igual a 0!")) {
+					System.out.println(e.getMessage());
+					}
+					else {
+						System.out.println("Debes introducir valores numéricos!");
+					}
+				}
 				break;
 			case "5":
-				cilindro.solicitarDatos();
-				cilindro.calcularVolumen();
+				while (true) {
+					try {
+						cilindro.solicitarDatos();
+						cilindro.calcularVolumen();
+						break;
+					} catch (Exception e) {
+						if (e.getMessage().equals("Ningún valor puede ser menor o igual a 0!")) {
+						System.out.println(e.getMessage());
+						}
+						else {
+							System.out.println("Debes introducir valores numéricos!");
+						}
+					} 
+				}
 				break;
 			case "6":
-				cono.solicitarDatos();
-				cono.calcularVolumen();
+				while (true) {
+					try {
+						cono.solicitarDatos();
+						cono.calcularVolumen();
+						break;
+					} catch (Exception e) {
+						if (e.getMessage().equals("Ningún valor puede ser menor o igual a 0!")) {
+						System.out.println(e.getMessage());
+						}
+						else {
+							System.out.println("Debes introducir valores numéricos!");
+						}
+					} 
+				}
 				break;
 			case "7":
-				cubo.solicitarDatos();
-				cubo.calcularVolumen();
+				while (salir) {
+					try {
+						cubo.solicitarDatos();
+						cubo.calcularVolumen();
+						break;
+					} catch (Exception e) {
+						if (e.getMessage().equals("Ningún valor puede ser menor o igual a 0!")) {
+						System.out.println(e.getMessage());
+						}
+						else {
+							System.out.println("Debes introducir valores numéricos!");
+						}
+					} 
+				}
 				break;
 			case "8":
 				salir = true;
+				break;
 			}
 		}
 	}

@@ -5,6 +5,8 @@ import static java.lang.Math.PI;
 
 import java.util.Scanner;
 
+import excepciones.negativeInput;
+
 public class Cono implements CalculosCaracteristicas {
 
 	//Atributos
@@ -62,21 +64,25 @@ public class Cono implements CalculosCaracteristicas {
 	}
 
 	//Métodos
-	public void solicitarDatos() {
-		
-		try {
+	public void solicitarDatos() throws negativeInput {
+			
 			System.out.println("Introduce el radio del cono: ");
-			this.setRadio(Integer.parseInt(teclado.nextLine()));
-		
+			float radio = Float.parseFloat(teclado.nextLine());
+			
 			System.out.println("Introduce la altura del cono: ");
-			this.setAltura(Integer.parseInt(teclado.nextLine()));
-		
+			float altura = Float.parseFloat(teclado.nextLine());
+			
 			System.out.println("Introduce la generatriz del cono: ");
-			this.setGeneratriz(Integer.parseInt(teclado.nextLine()));
-		}
-		catch (Exception error) {
-			System.out.println(error);
-		}
+			float generatriz = Float.parseFloat(teclado.nextLine());
+			
+			if (altura <= 0 || radio <= 0 || generatriz <= 0) {
+				throw new negativeInput("Ningún valor puede ser menor o igual a 0!");
+			}
+		
+			this.setRadio(radio);
+			this.setAltura(altura);	
+			this.setGeneratriz(generatriz);
+			
 	}
 	
 	@Override

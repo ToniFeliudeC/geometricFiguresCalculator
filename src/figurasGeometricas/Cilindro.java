@@ -5,6 +5,8 @@ import static java.lang.Math.PI;
 
 import java.util.Scanner;
 
+import excepciones.negativeInput;
+
 public class Cilindro implements CalculosCaracteristicas {
 
 	//Atributos
@@ -53,17 +55,21 @@ public class Cilindro implements CalculosCaracteristicas {
 	}
 
 	//Métodos
-	public void solicitarDatos() {
-		try {
+	public void solicitarDatos() throws negativeInput {
+
 			System.out.println("Introduce la altura del cilindro: ");
-			this.setAltura(Integer.parseInt(teclado.nextLine()));
-		
+			float altura = Float.parseFloat(teclado.nextLine());
+			
 			System.out.println("Introduce el radio del cilindro: ");
-			this.setRadio(Integer.parseInt(teclado.nextLine()));
-		}
-		catch (Exception error) {
-			System.out.println(error);
-		}
+			float radio = Float.parseFloat(teclado.nextLine());
+			
+			if (altura <= 0 || radio <= 0) {
+				throw new negativeInput("Ningún valor puede ser menor o igual a 0!");
+			}
+
+			this.setAltura(altura);
+			this.setRadio(radio);
+
 	}	
 	@Override
 	public void calcularArea() {

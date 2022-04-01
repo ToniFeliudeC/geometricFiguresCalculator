@@ -2,38 +2,39 @@ package figurasGeometricas;
 
 import java.util.Scanner;
 
-import excepciones.invalidInput;
+import excepciones.negativeInput;
 import interfaces.CalculosCaracteristicas;
 
 public class Rombo implements CalculosCaracteristicas {
-	
-	//Atributos
+
+	// Atributos
 	private static Scanner teclado = new Scanner(System.in);
 	private float diagonalMayor;
 	private float diagonalMenor;
-	
-	//Constructor vacío 
-	public Rombo() {}
-	
-	//Constructor completo
+
+	// Constructor vacío
+	public Rombo() {
+	}
+
+	// Constructor completo
 	public Rombo(float diagonalMayor, float diagonalMenor) {
 		this.setDiagonalMayor(diagonalMayor);
 		this.setDiagonalMenor(diagonalMenor);
 	}
-	
-	//Constructor copia
+
+	// Constructor copia
 	public Rombo(Rombo rombo) {
 		this.diagonalMayor = rombo.diagonalMayor;
 		this.diagonalMenor = rombo.diagonalMenor;
 	}
 
-	//toString
+	// toString
 	@Override
 	public String toString() {
 		return "Rombo [diagonalMayor=" + diagonalMayor + ", diagonalMenor=" + diagonalMenor + "]";
 	}
 
-	//Getters & Setters
+	// Getters & Setters
 	public float getDiagonalMayor() {
 		return diagonalMayor;
 	}
@@ -49,28 +50,32 @@ public class Rombo implements CalculosCaracteristicas {
 	public void setDiagonalMenor(float diagonalMenor) {
 		this.diagonalMenor = diagonalMenor;
 	}
-	
-	//Métodos
-	public void solicitarDatos() {	
-		try {
-			System.out.println("Introduce la diagonal mayor del rombo: ");
-			this.setDiagonalMayor(Integer.parseInt(teclado.nextLine()));
+
+	// Métodos
+	public void solicitarDatos() throws negativeInput {
+
+		System.out.println("Introduce la diagonal mayor del rombo: ");
+		float diagonalMayor = Float.parseFloat(teclado.nextLine());
+
+		System.out.println("Introduce la diagonal menor del rombo: ");
+		float diagonalMenor = Float.parseFloat(teclado.nextLine());
 		
-			System.out.println("Introduce la diagonal menor del rombo: ");
-			this.setDiagonalMenor(Integer.parseInt(teclado.nextLine()));
+		if (diagonalMayor <= 0 || diagonalMenor <= 0) {
+			throw new negativeInput("Ningún valor puede ser menor o igual a 0!");
 		}
-		catch (Exception error) {
-			System.out.println(error);
-		}
+		
+		this.setDiagonalMayor(diagonalMayor);
+		this.setDiagonalMenor(diagonalMenor);
+
 	}
-	
+
 	@Override
 	public void calcularArea() {
 		float area = (diagonalMayor * diagonalMenor) / 2;
 		this.imprimirCaracteristicas();
 		System.out.println("		  Área: " + area + "\n");
 	}
-	
+
 	@Override
 	public void calcularVolumen() {
 		this.imprimirCaracteristicas();
@@ -85,5 +90,5 @@ public class Rombo implements CalculosCaracteristicas {
 		System.out.println("		  Diagonal mayor: " + this.diagonalMayor);
 		System.out.println("		  Diagonal menor: " + this.diagonalMenor + "\n");
 	}
-	
+
 }

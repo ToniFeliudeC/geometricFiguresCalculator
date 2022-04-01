@@ -2,6 +2,7 @@ package figurasGeometricas;
 
 import java.util.Scanner;
 
+import excepciones.negativeInput;
 import interfaces.CalculosCaracteristicas;
 
 public class Cubo  implements CalculosCaracteristicas {
@@ -39,15 +40,17 @@ public class Cubo  implements CalculosCaracteristicas {
 	}
 
 	//Métodos
-	public void solicitarDatos() {
+	public void solicitarDatos() throws negativeInput {
 		
-		try {
 			System.out.println("Introduce la longitud de las aristas del cubo: ");
-			this.setAristas(Integer.parseInt(teclado.nextLine()));
-		}
-		catch (Exception error) {
-			System.out.println(error);
-		}
+			float aristas = Float.parseFloat(teclado.nextLine());
+			
+			if (aristas <= 0) {
+				throw new negativeInput("Ningún valor puede ser menor o igual a 0!");
+			}
+			
+			this.setAristas(aristas);
+
 	}
 	
 	@Override
