@@ -25,4 +25,4 @@ Se ha añadido un control de errores que comprobará si los datos introducidos p
 
 ## Tipos de variables
 
-Ciertas variables cuyo tipo era int han pasado a ser float para mantener consistencia y harmonía con el resto del programa.
+Ciertas variables cuyos tipos eran int han pasado a ser float para mantener consistencia y harmonía con el resto del programa.
