@@ -1,23 +1,23 @@
-# Calculadora de figuras geometricas
+# Calculadora de figuras geométricas
 
 ## Figuras
 
 + Rombo
-    + Area
+    + Área
 + Cilindro
-    + Area
+    + Área
     + Volumen
 + Cono
-    + Area lateral
-    + Area superficie
+    + Área lateral
+    + Área superficie
     + Volumen
 + Cubo
-    + Area
+    + Área
     + Volumen
 
 ## Funciones
 
-Este programa permite calcular distintas propiedades de figuras geometricas a partir de atributos simples de las mismas.
+Este programa permite calcular distintas propiedades de figuras geométricas a partir de atributos simples de las mismas.
 
 ## Control de errores
 
@@ -25,4 +25,4 @@ Se ha añadido un control de errores que comprobará si los datos introducidos p
 
 ## Tipos de variables
 
-Ciertas variables cuyos tipos eran int han pasado a ser float para mantener consistencia y harmonía con el resto del programa.
+Ciertas variables cuyos tipos eran int han pasado a ser float para mantener consistencia con el resto del programa.
